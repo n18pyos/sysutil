@@ -5,6 +5,7 @@ info = "ps - программа для просмотра процессов\n"
 def start_module(args):
 	for prc in psutil.process_iter(["pid", "name"]):
 		try:
-			print(f"PID: {prc['pid']:<8}   Name: {prc['name']}")
+			info = prc.as_dict(attrs=["pid", "name"])
+			print(f"PID: {info['pid']:<8}   Name: {info['name']}")
 		except:
 			pass
